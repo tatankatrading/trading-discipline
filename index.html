@@ -27,11 +27,11 @@
 
         .top-affirmation {
             color: #22c55e;
-            font-size: 1rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-align: center;
             text-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
-            padding: 16px 20px;
+            padding: 14px 18px;
             background: rgba(34, 197, 94, 0.1);
             border-radius: 12px;
             border: 1px solid rgba(34, 197, 94, 0.3);
@@ -133,13 +133,6 @@
 
         .section.active {
             display: block;
-        }
-
-        #menu {
-            background: transparent !important;
-            border: none !important;
-            box-shadow: none !important;
-            padding: 0 !important;
         }
 
         .section h2 {
@@ -410,8 +403,8 @@
             }
 
             .top-affirmation {
-                font-size: 0.9rem;
-                padding: 12px 16px;
+                font-size: 0.75rem;
+                padding: 10px 14px;
                 margin-bottom: 16px;
             }
         }
@@ -424,26 +417,23 @@
             WITH PRECISION AND CALM
         </div>
 
-        <!-- Main Menu -->
-        <div id="menu" class="section active">
-            <div class="nav-grid">
-                <button class="nav-btn" onclick="showSection('premarket')">
-                    <span class="emoji">📈</span>
-                    Pre-Market Reading
-                </button>
-                <button class="nav-btn" onclick="showSection('posttrade')">
-                    <span class="emoji">✓</span>
-                    Post-Trade Check
-                </button>
-                <button class="nav-btn" onclick="showSection('emergency')">
-                    <span class="emoji">⚡</span>
-                    Emergency Protocol
-                </button>
-                <button class="nav-btn" onclick="showSection('weekly')">
-                    <span class="emoji">📋</span>
-                    Weekly Statement
-                </button>
-            </div>
+        <div class="nav-grid">
+            <button class="nav-btn" onclick="showSection('premarket')">
+                <span class="emoji">📈</span>
+                Pre-Market Reading
+            </button>
+            <button class="nav-btn" onclick="showSection('posttrade')">
+                <span class="emoji">✓</span>
+                Post-Trade Check
+            </button>
+            <button class="nav-btn" onclick="showSection('emergency')">
+                <span class="emoji">⚡</span>
+                Emergency Protocol
+            </button>
+            <button class="nav-btn" onclick="showSection('weekly')">
+                <span class="emoji">📋</span>
+                Weekly Statement
+            </button>
         </div>
 
         <!-- Pre-Market Section -->
@@ -487,7 +477,7 @@
                 <p class="center-text">The market is opening. I am ready.</p>
             </div>
 
-            <button class="btn" onclick="showSection('menu')">Back to Menu</button>
+            <button class="btn" onclick="showMenu()">Back to Menu</button>
         </div>
 
         <!-- Post-Trade Section -->
@@ -528,7 +518,7 @@
             </div>
 
             <button class="btn-secondary btn" onclick="resetChecklist()">Reset Checklist</button>
-            <button class="btn" onclick="showSection('menu')">Back to Menu</button>
+            <button class="btn" onclick="showMenu()">Back to Menu</button>
         </div>
 
         <!-- Emergency Protocol Section -->
@@ -563,7 +553,7 @@
                 </p>
             </div>
 
-            <button class="btn" onclick="showSection('menu')">Back to Menu</button>
+            <button class="btn" onclick="showMenu()">Back to Menu</button>
         </div>
 
         <!-- Weekly Statement Section -->
@@ -579,18 +569,34 @@
                 <p><strong>Each day I follow my rules, I become the trader I am meant to be.</strong></p>
             </div>
 
-            <button class="btn" onclick="showSection('menu')">Back to Menu</button>
+            <button class="btn" onclick="showMenu()">Back to Menu</button>
         </div>
     </div>
 
     <script>
         function showSection(sectionId) {
+            // Hide nav grid
+            document.querySelector('.nav-grid').style.display = 'none';
+            
+            // Hide all sections
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
                 section.classList.remove('active');
             });
             
+            // Show selected section
             document.getElementById(sectionId).classList.add('active');
+        }
+
+        function showMenu() {
+            // Show nav grid
+            document.querySelector('.nav-grid').style.display = 'grid';
+            
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
         }
 
         function resetChecklist() {
